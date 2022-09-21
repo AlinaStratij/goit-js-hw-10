@@ -18,6 +18,8 @@ refs.inputText.addEventListener(
   debounce(onSearchInput, DEBOUNCE_DELAY)
 );
 function onSearchInput(evt) {
+  clearCountryInfo();
+  clearCountryList(); 
   const inputValue = evt.target.value.trim();
   if (!inputValue) {
     clearCountryInfo();
@@ -32,7 +34,7 @@ function onFetchSuccess(data) {
   console.log(data)
   
   if (data.length > 10) {
-    Notify.info('"Too many matches found. Please enter a more specific name."');
+    Notify.info('Too many matches found. Please enter a more specific name.');
    
   }
   if (data.length >= 2 && data.length <= 10) {
